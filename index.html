@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OEM to OES Replacement Part Number</title>
+    <style>
+        .dataframe {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .dataframe th, .dataframe td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .dataframe th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>OEM to OES Replacement Part Number</h1>
+    <form action="/recommend" method="post">
+        <label for="oem_part_number">Enter OEM Part Number:</label>
+        <input type="text" id="oem_part_number" name="oem_part_number" value="{{ oem_part_number }}">
+        <button type="submit">Get Recommendations</button>
+    </form>
+    {% if tables %}
+        <h2>Matching parts for OEM part number {{ oem_part_number }}:</h2>
+        <div>{{ tables|safe }}</div>
+    {% elif error %}
+        <h2>{{ error }}</h2>
+    {% endif %}
+</body>
+</html>
